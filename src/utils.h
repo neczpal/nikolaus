@@ -1,10 +1,10 @@
 #ifndef UTILS_H_INCLUDED
 #define UTILS_H_INCLUDED
 
-#include<math.h>
-#include<string.h>
-#include<stdlib.h>
-#include <SDL_gfxPrimitives.h>
+#include <math.h>
+#include <string.h>
+#include <stdlib.h>
+#include <SDL_types.h>
 
 #define R 25
 #define R2 625

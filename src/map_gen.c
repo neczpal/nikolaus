@@ -21,13 +21,13 @@ int gut(Graph* g, int *m, int i){
 }
 
 /**
-    Liefiert ein Array mit die 3 kürzesten Hamilton-Kreislänge
+    Liefiert ein Array mit die 3 kuerzesten Hamilton-Kreislaenge
     Graph soll mindestens 1 Hamilton-Kreis haben, oder es liefiert nicht sinnvoll Datei
 */
 int* brute_force(Graph* g){
     int *m = malloc(sizeof(int) * (g->N+1));//Menge der Weg
     int *s = malloc(sizeof(int) * (g->N+1));//Gewicht
-    int *best = malloc(sizeof(int) * 3);   //3 kürzeste Hamilton-Kreis
+    int *best = malloc(sizeof(int) * 3);   //3 kuerzeste Hamilton-Kreis
 
     int i = 1;
     int tmp;
@@ -55,6 +55,7 @@ int* brute_force(Graph* g){
 
             if (i == g->N){
                 tmp = s[i-1]+g->matrix[m[i-1]][0];
+
                 if (tmp < best[0]){
                     best[2] = best[1];
                     best[1] = best[0];
@@ -171,6 +172,6 @@ int main(int argc, char *argv[]){
     if(argc == 3)
         convert(argv[1], argv[2]);
     else
-        printf("Falsch arguments!!!\n");
+        printf("Invalid arguments!!!\n");
     return 0;
 }

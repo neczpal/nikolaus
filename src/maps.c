@@ -56,8 +56,8 @@ Map load_map(const char* map_name, int target){
     g.pos = 0;
     g.weg = 0;
     g.id = target;
-    //NIKOLAUS
 
+    //NIKOLAUS
     g.nik_x = g.x[g.pos];
     g.nik_y = g.y[g.pos];
     g.nik_richtung = 0;
@@ -85,8 +85,10 @@ void free_map(Map* g){
     free(g->color);
 }
 int bewegen(Map* m){
-	if(m->nik_n <= 0){
+	if(m->nik_i <= 0){
         m->color[m->nik_wohin] = 1;
+        m->weg -= m->temp_weg;
+        m->temp_weg = 0;
         m->weg += m->matrix[m->pos][m->nik_wohin];
         m->pos = m->nik_wohin;
         m->nik_x = m->x[m->pos];
@@ -96,7 +98,9 @@ int bewegen(Map* m){
     }else{
         m->nik_x += m->nik_vx;
         m->nik_y += m->nik_vy;
-        m->nik_n--;
+        m->weg += ((1.0 / (m->nik_n - 1)) * m->matrix[m->pos][m->nik_wohin]);
+        m->temp_weg += ((1.0 / (m->nik_n - 1)) * m->matrix[m->pos][m->nik_wohin]);
+        m->nik_i--;
         return 1;
     }
 }
@@ -152,7 +156,9 @@ SDL_TimerID gehen_zu(Map* m, int wohin){
     d = distd(m->nik_x, m->nik_y, m->x[wohin], m->x[wohin]);
     m->nik_vx = (PLAYER_V*distx) / d;
     m->nik_vy = (PLAYER_V*disty) / d;
-    m->nik_n = (int) (d / PLAYER_V + 0.5);
+    m->nik_i = (int) (d / PLAYER_V + 0.5);
+    m->nik_n = m->nik_i;
+    m->temp_weg = 0.0;
     m->nik_wohin = wohin;
 
     return SDL_AddTimer(TIMER_SLEEP, my_timer, NULL);
@@ -161,16 +167,16 @@ int end_game(Map* m){
     int i;
     //weg > 3.beste
     if(m->weg > m->best[2]){
-        return 1;
+        return -1;
     }
     //kihagyott csucs
     if(m->pos == 0 && m->color[0] == 1){
         for(i = 0; i < m->N; i++){
             if(m->color[i] == 0){
-                return 1;
+                return -2;
             }
         }
-        return 2;
+        return 2;//->WIN
     }
     //beschränkt
     for(i = 0; i < m->N; i++){
@@ -178,5 +184,5 @@ int end_game(Map* m){
             return 0;
         }
     }
-    return 1;
+    return -3;
 }

@@ -1,15 +1,23 @@
 #include "scores.h"
 
 Score load_scores(){
-    FILE* f = fopen("scores.txt", "r");
     Score scr;
     int map_i, score_i, i;
-    for(i = 0;i < 16; i++){//16 Map van
-        fscanf(f, "%d", &map_i);
-        fscanf(f, "%d", &score_i);
-        scr.scores[map_i] = score_i;
-    }
+    FILE* f = fopen("scores.txt", "r");
+
+    //Falls scores.txt nicht existiert
+    if (f == NULL) {
+        for(i = 0;i < 16; i++){//16 Map van
+            scr.scores[i] = 0;
+        }
+    } else {
+        for(i = 0;i < 16; i++){//16 Map van
+            fscanf(f, "%d", &map_i);
+            fscanf(f, "%d", &score_i);
+            scr.scores[map_i] = score_i;
+        }
     fclose(f);
+    }
 
     return scr;
 }

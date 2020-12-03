@@ -1,3 +1,4 @@
+#include <SDL_events.h>
 #include "utils.h"
 
 int dist(int x1, int y1, int x2, int y2){
@@ -13,7 +14,8 @@ int ist_in_kreis(int x1, int y1, int x2, int y2){
 char* to_mapname(int target){
     char buffer[20];
 
-    itoa(target, buffer, 10);
+//    itoa(target, buffer, 10);
+    int length = snprintf (buffer, 20, "%d",  target);
     strcat(buffer, ".txt");
 
     return buffer;

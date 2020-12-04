@@ -13,9 +13,9 @@ A simple puzzle game based on the
 ## Setup
 
 
-* The project uses SDL2, SDL2_Image and SDL2_Gfx [libraries](http://www.libsdl.org).
+* The project needs SDL2, SDL2_Image and SDL2_Gfx [libraries](http://www.libsdl.org).
 
-  * Installing the neccessary libraries with Homebrew
+  * Installing with Homebrew
       ```sh
       brew install sdl2
       brew install sdl2_image
@@ -30,6 +30,10 @@ A simple puzzle game based on the
 * Run `Nikolaus` to play the game
 
 * (Optional) Use `MapGen` with an input graph to get an output graph where the shortest route will be calculated
+
+## Documentation
+
+ German dokumentation available [here](https://github.com/neczpal/nikolaus/tree/master/docs-de/).
 
 ## License
 

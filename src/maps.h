@@ -24,8 +24,8 @@
 
     int best[3];
     int pos;
-    double weg;
-    double temp_weg;
+    int weg;
+    int temp_weg;
 
     //f�r die Bewegung
     double nik_x;

@@ -85,7 +85,7 @@ void free_map(Map* g){
     free(g->color);
 }
 int bewegen(Map* m){
-	if(m->nik_i <= 0){
+	if(m->nik_i <= 0) {
         m->color[m->nik_wohin] = 1;
         m->weg -= m->temp_weg;
         m->temp_weg = 0;
@@ -95,11 +95,11 @@ int bewegen(Map* m){
         m->nik_y = m->y[m->pos];
         m->nik_richtung = 0;
         return 0;
-    }else{
+    } else {
         m->nik_x += m->nik_vx;
         m->nik_y += m->nik_vy;
-        m->weg += ((1.0 / (m->nik_n - 1)) * m->matrix[m->pos][m->nik_wohin]);
-        m->temp_weg += ((1.0 / (m->nik_n - 1)) * m->matrix[m->pos][m->nik_wohin]);
+        m->weg += (int) (((1.0 / (m->nik_n - 1)) * m->matrix[m->pos][m->nik_wohin]) + 0.5);
+        m->temp_weg += (int) (((1.0 / (m->nik_n - 1)) * m->matrix[m->pos][m->nik_wohin]) + 0.5);
         m->nik_i--;
         return 1;
     }

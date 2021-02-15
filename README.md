@@ -37,7 +37,7 @@ A simple puzzle game based on the
 
 ## License
 
-All Rights Reserved.
+MIT
 
 Copyright (c) 2020 Neczpál Ábel.
 
@@ -48,4 +48,4 @@ The project is uploaded for educational purpose. Contribution and fair use of th
 
 Neczpál Ábel - [neczpal@gmail.com](mailto:neczpal@gmail.com)
 
-Project Link: [https://github.com/neczpal/nikolaus](https://github.com/neczpal/nikolaus)
+Project Link - [https://github.com/neczpal/nikolaus](https://github.com/neczpal/nikolaus)
